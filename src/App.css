@@ -64,7 +64,15 @@ section {
 }
 
 
-.section_title{
+.section_title {
   color: var(--primary-color);
-font-weight: 600;
+  font-weight: 600;
+}
+
+
+
+@media only screen and (max-width : 768px){
+section {
+  padding: 40px 0px;
+}
 }

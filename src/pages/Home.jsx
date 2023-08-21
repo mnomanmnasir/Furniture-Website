@@ -14,17 +14,23 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
+
 const Home = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: 950 });
+    })
+    
 
     const [trendingProducts, setTrendingProducts] = useState([]);
     const [bestSalesProducts, setBestSalesProducts] = useState([]);
     const [mobileProducts, setMobileProducts] = useState([]);
     const [wirelessProducts, setWirelessProducts] = useState([]);
+    const [watchProducts, setWatchProducts] = useState([]);
 
     const year = new Date().getFullYear();
 
     useEffect(() => {
-        AOS.init({ duration: 950 });
         const filteredTrendingProducts = products.filter(
             (item) => item.category === 'chair'
         );
@@ -37,10 +43,15 @@ const Home = () => {
         const filteredWirelessProducts = products.filter(
             (item) => item.category === 'wireless'
         );
+
+        const filteredWatchProducts = products.filter(
+            (item) => item.category === 'watch'
+        );
         setTrendingProducts(filteredTrendingProducts)
         setBestSalesProducts(filteredBestSalesProducts)
         setMobileProducts(filteredMobileProducts)
         setWirelessProducts(filteredWirelessProducts)
+        setWatchProducts(filteredWatchProducts)
     }, [])
 
     return (
@@ -81,7 +92,7 @@ const Home = () => {
                     <Container>
                         <Row>
                             <Col lg='12' className='text-center'>
-                                <h2 data-aos="zoom-in" data-aos-delay="300" className="section_title">
+                                <h2 data-aos="fade-right" data-aos-delay="300" className="section_title">
                                     Trending Products
                                 </h2>
                             </Col>
@@ -93,7 +104,7 @@ const Home = () => {
                     <Container>
                         <Row>
                             <Col lg='12' className='text-center'>
-                                <h2 data-aos="zoom-in" data-aos-delay="300" className="section_title">
+                                <h2 className="section_title">
                                     Best Sales
                                 </h2>
                             </Col>
@@ -109,8 +120,8 @@ const Home = () => {
                     <Container>
 
                         <Row>
-                            <Col data-aos="fade-right" data-aos-delay="300" lg='6' md='6'>
-                                <div className="clock_top-content">
+                            <Col lg='6' md='12' className='count_down-col'>
+                                <div data-aos="fade-right" data-aos-delay="300" className="clock_top-content">
                                     <h4 className="text-white fs-6 mb-2">Limited offer</h4>
                                     <h3 className="text-white fs-5 mb-3">Limited offer</h3>
                                 </div>
@@ -120,8 +131,8 @@ const Home = () => {
                                     <Link to='/shop'>Vist Store</Link>
                                 </motion.button>
                             </Col>
-                            <Col lg='6' md='6' className='text-end'>
-                                <img data-aos="fade-left" data-aos-delay="300" src={counterImg} alt="" />
+                            <Col lg='6' md='12' className='text-end counter_img'>
+                                <img data-aos="zoom-in" data-aos-delay="300" src={counterImg} alt="" />
                             </Col>
                         </Row>
                     </Container>
@@ -130,18 +141,35 @@ const Home = () => {
 
                     <Container>
                         <Row>
-                            <Col lg='12' className='text-center'>
-                                <h2 className="section_title">
+                            <Col lg='12' className='text-center mb-5'>
+                                <h2 data-aos="fade-right" data-aos-delay="300" className="section_title">
                                     New Arrivals
                                 </h2>
                             </Col>
-                    
+
                             <ProductList data={mobileProducts} />
-                    
+
                             <ProductList data={wirelessProducts} />
                         </Row>
                     </Container>
                 </section>
+
+                <section className='watch_products'>
+                    <Container>
+                        <Row>
+                            <Col lg='12' className='text-center mb-5'>
+                                <h2 data-aos="fade-right" data-aos-delay="300" className="section_title">
+                                    Watch Products
+                                </h2>
+                            </Col>
+
+                            <ProductList data={watchProducts} />
+
+                        </Row>
+                    </Container>
+                </section>
+
+
             </Helmet>
         </>
     )

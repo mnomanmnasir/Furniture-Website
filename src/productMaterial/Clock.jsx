@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+
+import '../styles/clock.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
 
 const Clock = () => {
     const [days, setDays] = useState();
@@ -12,7 +13,7 @@ const Clock = () => {
     let interval;
 
     const countDown = () => {
-        const destination = new Date('Aug 21, 2023').getTime();
+        const destination = new Date('Aug 21, 2024').getTime();
         interval = setInterval(() => {
 
             const now = new Date().getTime();
@@ -33,7 +34,6 @@ const Clock = () => {
     };
 
     useEffect(() => {
-        
         AOS.init({ duration: 950 });
         countDown();
     });

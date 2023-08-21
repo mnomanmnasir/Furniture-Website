@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import './header.css'
 import { Container, Row } from 'reactstrap'
 import logo from '../../assets/images/eco-logo.png'
@@ -24,16 +24,37 @@ const nav_Links = [
 ]
 
 const Header = () => {
+
+    const headerRef = useRef(null);
+    const menuRef = useRef(null);
+    const stickyHeaderFunc = () => {
+        window.addEventListener('scroll', () => {
+            if (
+                document.body.scrollTop > 80 ||
+                document.documentElement.scrollTop > 80
+            ) {
+                headerRef.current.classList.add('sticky_header');
+            } else {
+                headerRef.current.classList.remove('sticky_header')
+            }
+        })
+    }
+    useEffect(() => {
+        stickyHeaderFunc();
+        return () => window.removeEventListener("scroll", stickyHeaderFunc)
+    })
+
+    const menuToggle = () => menuRef.current.classList.toggle('active_menu')
     return (
         <>
-            <header className="header">
+            <header className="header" ref={headerRef}>
                 <Container>
                     <Row>
                         <div className="nav_wrapper">
                             <div className="logo">
                                 <img src={logo} alt="logo" />
                             </div>
-                            <div className="navigation">
+                            <div className="navigation" ref={menuRef} onClick={menuToggle}>
                                 <ul className="menu">
                                     {
                                         nav_Links.map((item, index) => (
@@ -59,13 +80,13 @@ const Header = () => {
                                 <span>
                                     <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="userIcon" />
                                 </span>
-                            </div>
-                            <div className="mobile_menu">
-                                <span>
-                                    <i className="ri-menu-line">
+                                <div className="mobile_menu">
+                                    <span onClick={menuToggle}>
+                                        <i className="ri-menu-line">
 
-                                    </i>
-                                </span>
+                                        </i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </Row>
