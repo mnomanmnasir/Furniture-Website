@@ -5,11 +5,27 @@ import { Col } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux'
+import { cartActions } from '../redux/slices/cartSlices'
+
+
 
 
 const ProductCard = ({item}) => {
+const dispatch = useDispatch();
 
-
+const addToCart = () => {
+    dispatch(
+        cartActions.addItem({
+            id : item.id,
+            productName : item.productName,
+            price : item.price,
+            image : item.imgUrl
+        })
+    )
+    toast.success("Product added successfully")
+}
 
     useEffect(() => {
         AOS.init({ duration: 950 });
@@ -29,7 +45,7 @@ const ProductCard = ({item}) => {
                </div>
                 <div className="product_card-botton d-flex align-item-center justify-content-between p-2">
                     <span className="price">${item.price}</span>
-                    <motion.span whileTap={{scale : 1.2}}><i className="ri-add-line"></i></motion.span>
+                    <motion.span whileTap={{scale : 1.2}} onClick={addToCart}><i className="ri-add-line"></i></motion.span>
                 </div>
             </div>
         </Col>
