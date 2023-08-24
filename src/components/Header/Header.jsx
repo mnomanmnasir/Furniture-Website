@@ -49,7 +49,7 @@ const Header = () => {
     const menuToggle = () => menuRef.current.classList.toggle('active_menu')
 
     const navigateToCart = () => {
-navigate('/cart')
+        navigate('/cart')
     }
     return (
         <>

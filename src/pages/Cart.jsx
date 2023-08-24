@@ -6,9 +6,13 @@ import { Container, Row, Col } from 'reactstrap'
 import { cartActions } from '../redux/slices/cartSlices'
 import { motion } from 'framer-motion'
 import { useSelector, useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
+ 
 
 const Cart = () => {
-    const cartItems = useSelector(state => state.cart.cartItems);
+    const cartItems = useSelector((state)=> state.cart.cartItems);
+    
+    const totalAmount = useSelector((state) => state.cart.totalAmount);
 
     return (
 
@@ -36,7 +40,7 @@ const Cart = () => {
                                         <tbody>
                                             {
                                                 cartItems.map((item, index) => (
-                                                    <Tr item={item} key={index}/>
+                                                    <Tr item={item} key={index} />
                                                 ))
                                             }
                                         </tbody>
@@ -44,7 +48,26 @@ const Cart = () => {
                             }
                         </Col>
                         <Col lg='3'>
-
+                            <div>
+                                <h6 className='d-flex align-items-center justify-content-between'>
+                                    Subtotal
+                                <span className='fs-4 fw-bold'>${totalAmount}</span>
+                                </h6>
+                            </div>
+                            <p className='fs-6 mt-2'>taxes and shipping will calculate in checkout</p>
+                                
+                            <div>
+                                <button className="buy_btn w-100">
+                                    <Link to='/checkout '>
+                                        Checkout
+                                    </Link>
+                                </button>
+                                <button className="buy_btn w-100 mt-3">
+                                    <Link to='/shop'>
+                                        Continue Shopping
+                                    </Link>
+                                </button>
+                            </div>
                         </Col>
                     </Row>
                 </Container>
