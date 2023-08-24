@@ -61,7 +61,7 @@ const Shop = () => {
             <section>
                 <Container>
                     <Row>
-                        <Col lg='3' md='3'>
+                        <Col lg='3' md='6'>
                             <div className="filter_widget">
                                 <select onClick={handleFilter}>
 
@@ -75,7 +75,7 @@ const Shop = () => {
                             </div>
                         </Col>
 
-                        <Col lg='3' md='3'>
+                        <Col lg='3' md='6' className='text-end'>
                             <div className="filter_widget">
                                 <select>
                                     <option>Sort by</option>
@@ -84,7 +84,7 @@ const Shop = () => {
                                 </select>
                             </div>
                         </Col>
-                        <Col lg='6' md='6'>
+                        <Col lg='6' md='12'>
                             <div className="search_box">
                                 <input type="text" placeholder='Search ......' onChange={handleSearch} />
                                 <span><i className="ri-search-line"></i></span>
@@ -97,11 +97,11 @@ const Shop = () => {
                 <Container>
                     <Row>
                         {
-                        productsData.length === 0 ? (
-                            <h1 className='text-center fs-4'>No Product are found!</h1>
-                        ) : (
-                        <ProductList data={productsData} />
-                        )}
+                            productsData.length === 0 ? (
+                                <h1 className='text-center fs-4'>No Product are found!</h1>
+                            ) : (
+                                <ProductList data={productsData} />
+                            )}
 
                     </Row>
                 </Container>
