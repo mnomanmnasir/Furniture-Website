@@ -7,16 +7,20 @@ import { cartActions } from '../redux/slices/cartSlices'
 import { motion } from 'framer-motion'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
- 
+import Footer from '../components/Footer/Footer'
+import Header from '../components/Header/Header'
+
 
 const Cart = () => {
-    const cartItems = useSelector((state)=> state.cart.cartItems);
-    
+    const cartItems = useSelector((state) => state.cart.cartItems);
+
     const totalAmount = useSelector((state) => state.cart.totalAmount);
 
     return (
 
         <Helmet title="Cart">
+            <Header />
+
             <CommonSection title="Shopping Cart" />
             <section>
                 <Container>
@@ -51,11 +55,11 @@ const Cart = () => {
                             <div>
                                 <h6 className='d-flex align-items-center justify-content-between'>
                                     Subtotal
-                                <span className='fs-4 fw-bold'>${totalAmount}</span>
+                                    <span className='fs-4 fw-bold'>${totalAmount}</span>
                                 </h6>
                             </div>
                             <p className='fs-6 mt-2'>taxes and shipping will calculate in checkout</p>
-                                
+
                             <div>
                                 <button className="buy_btn w-100">
                                     <Link to='/checkout '>
@@ -72,6 +76,8 @@ const Cart = () => {
                     </Row>
                 </Container>
             </section>
+
+            <Footer />
 
         </Helmet>
     )
@@ -92,5 +98,6 @@ const Tr = ({ item }) => {
         <td>{item.quantity}pcs</td>
         <td><motion.i whileTap={{ scale: 1.2 }} className="ri-delete-bin-line" onClick={deleteProduct}></motion.i></td>
     </tr>
+
 }
 export default Cart;

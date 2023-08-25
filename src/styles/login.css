@@ -1,0 +1,45 @@
+.auth_btn {
+    background: #fff;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+
+.auth_form {
+    background: var(--primary-color);
+    padding: 40px;
+    border-radius: 5px;
+}
+
+
+.auth_form p {
+    margin-top: 30px;
+}
+
+.auth_form p a {
+    color: rgba(255, 255, 255, 0.735);
+}
+
+.auth_form input[type="file"] {
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.loading-icon {
+    margin-top: 10%;
+    color: teal;
+    font-size: 3rem;
+    animation: animate 2s infinite;
+}
+
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}

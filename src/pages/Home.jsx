@@ -7,9 +7,13 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Service from '../services/Service';
 import ProductList from '../productMaterial/ProductList';
+import Footer from '../components/Footer/Footer'
 import products from '../assets/data/products';
 import counterImg from '../assets/images/counter-timer-img.png'
 import Clock from '../productMaterial/Clock';
+import Header from '../components/Header/Header'
+
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -58,6 +62,7 @@ const Home = () => {
 
         <>
             <Helmet title={'Home'}>
+            <Header />
 
                 <section className="hero_section">
                     <Container>
@@ -169,7 +174,8 @@ const Home = () => {
                     </Container>
                 </section>
 
-
+                <Footer />
+       
             </Helmet>
         </>
     )

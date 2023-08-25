@@ -5,6 +5,10 @@ import { Container, Row, Col } from 'reactstrap';
 import '../styles/shop.css'
 import products from '../assets/data/products'
 import ProductList from '../productMaterial/ProductList';
+import Footer from '../components/Footer/Footer'
+import Header from '../components/Header/Header'
+
+
 
 const Shop = () => {
 
@@ -56,6 +60,8 @@ const Shop = () => {
     return (
 
         <Helmet title="shop">
+                        <Header />
+
             <CommonSection title="Product" />
 
             <section>
@@ -106,6 +112,9 @@ const Shop = () => {
                     </Row>
                 </Container>
             </section>
+            
+            <Footer />
+       
         </Helmet>
     )
 }

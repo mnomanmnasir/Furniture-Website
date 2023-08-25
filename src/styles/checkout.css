@@ -1,5 +1,6 @@
 .billing_form .form_group input {
-    border : 1px solid var(--card-bg-02)
+    border : 1px solid var(--card-bg-02);
+    /* width: 100%; */
 }
 
 .checkout_cart{
