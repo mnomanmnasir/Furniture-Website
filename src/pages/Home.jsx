@@ -12,8 +12,8 @@ import products from '../assets/data/products';
 import counterImg from '../assets/images/counter-timer-img.png'
 import Clock from '../productMaterial/Clock';
 import Header from '../components/Header/Header'
-
-
+import useGetData from '../custom-hooks/useGetData';
+import { FiCommand } from "react-icons/fi";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -24,7 +24,7 @@ const Home = () => {
     useEffect(() => {
         AOS.init({ duration: 950 });
     })
-    
+
 
     const [trendingProducts, setTrendingProducts] = useState([]);
     const [bestSalesProducts, setBestSalesProducts] = useState([]);
@@ -56,13 +56,13 @@ const Home = () => {
         setMobileProducts(filteredMobileProducts)
         setWirelessProducts(filteredWirelessProducts)
         setWatchProducts(filteredWatchProducts)
-    }, [])
+    }, [products])
 
     return (
 
         <>
             <Helmet title={'Home'}>
-            <Header />
+                <Header />
 
                 <section className="hero_section">
                     <Container>
@@ -101,7 +101,9 @@ const Home = () => {
                                     Trending Products
                                 </h2>
                             </Col>
-                            <ProductList data={trendingProducts} />
+                            
+                                    <ProductList data={trendingProducts} />
+                            
                         </Row>
                     </Container>
                 </section>
@@ -175,7 +177,7 @@ const Home = () => {
                 </section>
 
                 <Footer />
-       
+
             </Helmet>
         </>
     )

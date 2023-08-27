@@ -115,6 +115,7 @@ navigate("/home")
                                             <div className='d-flex align-item-center justifu-content-center flex-column'>
                                                 <Link to="/signup">Signup</Link>
                                                 <Link to="/login">Login</Link>
+                                                <Link to="/dashboard">Dashboard</Link>
                                             </div>)
                                         }
                                     </div>
