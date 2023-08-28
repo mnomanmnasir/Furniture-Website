@@ -26,9 +26,9 @@ const nav_Links = [
     {
         path: '/cart',
         display: 'Cart'
+        
     }
 ]
-
 const Header = () => {
 
     const headerRef = useRef(null);
@@ -38,27 +38,25 @@ const Header = () => {
     const navigate = useNavigate()
     const { currentUser } = useAuth();
 
-    const stickyHeaderFunc = () => {
-        window.addEventListener('scroll', () => {
-            if (
-                document.body.scrollTop > 80 ||
-                document.documentElement.scrollTop > 80
-            ) {
-                headerRef.current.classList.add('sticky_header');
-            } else {
-                headerRef.current.classList.remove('sticky_header')
-            }
+    const logout = () => {
+        signOut(auth).then(() => {
+            toast.success("Loggout Out");
+            navigate("/home")
+        }).catch(err => {
+            toast.error(err.message)
         })
     }
-
-const logout = ()=> {
-    signOut(auth).then(()=>{
-toast.success("Loggout Out");
-navigate("/home")
-    }).catch(err=> {
-        toast.error(err.message)
-    })
-}
+    
+    
+    const stickyHeaderFunc = () => {
+        window.addEventListener('scroll', () => {
+            // if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+            //     headerRef.current.classList.add('sticky_header');
+            // } else {
+            //     headerRef.current.classList.remove('sticky_header')
+            // }
+        })
+    }
 
     useEffect(() => {
         stickyHeaderFunc();
@@ -71,7 +69,7 @@ navigate("/home")
         navigate('/cart')
     }
 
-    const toggleProfileActions = ()=> profileActionRef.current.classList.toggle('show_profileActions')
+    const toggleProfileActions = () => profileActionRef.current.classList.toggle('show_profileActions')
     console.log(toggleProfileActions)
     return (
         <>
@@ -102,29 +100,29 @@ navigate("/home")
                                     <span className="badge">1</span>
                                 </span>
                                 <span className="cart_icon" onClick={navigateToCart}>
-                                    <i className="ri-shopping-bag-line"></i>
+                                    <i class="ri-shopping-bag-line"></i>
                                     <span className="badge">{totalQuantity}</span>
                                 </span>
                                 <div className='profile'>
-                                    <motion.img whileTap={{ scale: 1.2 }} src={currentUser ? currentUser.photoURL : userIcon} alt="" onClick={toggleProfileActions}/>
+                                    <motion.img whileTap={{ scale: 1.2 }} src={currentUser ? currentUser.photoURL : userIcon} alt="" onClick={toggleProfileActions} />
+
                                     <div className="profile_action" ref={profileActionRef} onClick={toggleProfileActions}>
                                         {
-                                            currentUser ? (<span onClick={logout}>Logout</span>) : 
-                                            
-                                            (
-                                            <div className='d-flex align-item-center justifu-content-center flex-column'>
-                                                <Link to="/signup">Signup</Link>
-                                                <Link to="/login">Login</Link>
-                                                <Link to="/dashboard">Dashboard</Link>
-                                            </div>)
+                                            currentUser ? (<span onClick={logout}>Logout</span>) :
+
+                                                (
+                                                    <div className='d-flex align-item-center justifu-content-center flex-column'>
+                                                        <Link to="/signup">Signup</Link>
+                                                        <Link to="/login">Login</Link>
+                                                        <Link to="/dashboard">Dashboard</Link>
+                                                    </div>)
                                         }
                                     </div>
                                 </div>
                                 {/* <p>{currentUser.displayName}</p> */}
                                 <div className="mobile_menu">
                                     <span onClick={menuToggle}>
-                                        <i className="ri-menu-line">
-
+                                        <i class="ri-menu-line">
                                         </i>
                                     </span>
                                 </div>

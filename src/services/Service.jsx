@@ -11,9 +11,11 @@ import 'aos/dist/aos.css';
 
 const Service = () => {
 
+
     useEffect(() => {
         AOS.init({ duration: 950 });
     })
+
 
     return (
 
@@ -30,7 +32,7 @@ const Service = () => {
 
                                     <span data-aos="flip-up" data-aos-delay="800"><i class={item.icon}></i></span>
 
-                                    <div data-aos="flip-up" data-aos-delay="300">
+                                    <div>
                                         <h3>{item.title}</h3>
                                         <p>{item.subtitle}</p>
                                     </div>

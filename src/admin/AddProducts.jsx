@@ -5,7 +5,7 @@ import { db, storage } from '../firebase.config'
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import { collection, addDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-
+import Footer from '../components/Footer/Footer';
 
 const AddProducts = () => {
 
@@ -27,7 +27,7 @@ const AddProducts = () => {
         //     shortDesc: enterShortDesc,
         //     description: enterDescription,
         //     category: enterCategory,
-        //     price: enterPrice,
+            //     price: enterPrice,
         //     imgUrl: enterProductImg,
         // }
 
@@ -76,16 +76,16 @@ const AddProducts = () => {
                                     <Form onSubmit={addProduct}>
                                         <FormGroup className='form_group'>
                                             <span>Product Title</span>
-                                            <input type="text" placeholder='Double Sofa' value={enterTitle} onChange={(e) => setEnterTitle(e.target.value)} required />
+                                            <input type="text" placeholder='Please Enter the any Item' value={enterTitle} onChange={(e) => setEnterTitle(e.target.value)} required />
                                         </FormGroup>
 
                                         <FormGroup className='form_group'>
                                             <span>Short Description</span>
-                                            <input type="text" placeholder='lorem......' value={enterShortDesc} onChange={(e) => setEnterShortDesc(e.target.value)} required />
+                                            <input type="text" placeholder='Short Desc.....' value={enterShortDesc} onChange={(e) => setEnterShortDesc(e.target.value)} required />
                                         </FormGroup>
                                         <FormGroup className='form_group'>
                                             <span>Description</span>
-                                            <input type="text" placeholder='Description'
+                                            <input type="text" placeholder='Message....'
                                                 value={enterDescription} onChange={(e) => setEnterDescription(e.target.value)} required
                                             />
                                         </FormGroup>
@@ -125,7 +125,9 @@ const AddProducts = () => {
                     </Row>
                 </Container>
             </section>
+       <Footer />
         </>
+
     )
 }
 

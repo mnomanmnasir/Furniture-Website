@@ -18,12 +18,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 
-
 const Home = () => {
 
-    useEffect(() => {
-        AOS.init({ duration: 950 });
-    })
 
 
     const [trendingProducts, setTrendingProducts] = useState([]);
@@ -35,6 +31,9 @@ const Home = () => {
     const year = new Date().getFullYear();
 
     useEffect(() => {
+
+        AOS.init({ duration: 950 });
+
         const filteredTrendingProducts = products.filter(
             (item) => item.category === 'chair'
         );
@@ -101,9 +100,9 @@ const Home = () => {
                                     Trending Products
                                 </h2>
                             </Col>
-                            
-                                    <ProductList data={trendingProducts} />
-                            
+
+                            <ProductList data={trendingProducts} />
+
                         </Row>
                     </Container>
                 </section>
@@ -111,7 +110,7 @@ const Home = () => {
                     <Container>
                         <Row>
                             <Col lg='12' className='text-center'>
-                                <h2 className="section_title">
+                                <h2 data-aos="fade-right" data-aos-delay="300" className="section_title">
                                     Best Sales
                                 </h2>
                             </Col>

@@ -27,9 +27,6 @@ const addToCart = () => {
     toast.success("Product added successfully")
 }
 
-    useEffect(() => {
-        AOS.init({ duration: 950 });
-    })
     return (
         <Col lg='3' md='4' className='mb-2'>
             <div data-aos="zoom-in" data-aos-delay="300" className="product_item">

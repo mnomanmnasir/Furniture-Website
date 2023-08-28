@@ -60,7 +60,7 @@ const Shop = () => {
     return (
 
         <Helmet title="shop">
-                        <Header />
+            <Header />
 
             <CommonSection title="Product" />
 
@@ -112,9 +112,9 @@ const Shop = () => {
                     </Row>
                 </Container>
             </section>
-            
+
             <Footer />
-       
+
         </Helmet>
     )
 }

@@ -4,7 +4,9 @@ import { Container, Row, Col } from 'reactstrap'
 import { deleteDoc, doc } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import { toast } from 'react-toastify'
-
+import { FiCommand } from "react-icons/fi";
+import '../styles/login.css'
+import Footer from '../components/Footer/Footer'
 
 
 const User = () => {
@@ -17,44 +19,52 @@ const User = () => {
         toast.success("User Deleted!")
     }
     return (
-        <section>
-            <Container>
-                <Row>
-                    <Col lg='12'>
-                        <h4 className="fw-bold">
-                            Users
-                        </h4>
-                    </Col>
-                    <Col lg="12" className='pt-5'>
-                        <table className='table'>
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
+        <>
+            <section>
+                <Container>
+                    <Row>
+                        <Col lg='12'>
+                            <h4 className="fw-bold">
+                                Users
+                            </h4>
+                        </Col>
+                        <Col lg="12" className='pt-5'>
+                            <table className='table'>
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
 
-                            <tbody>
-                                {
-                                    loading ? <h4 className='pt-5 fw-bold'>Loading .....</h4>
-                                        : usersData?.map(user => (
+                                <tbody>
+                                    {
+                                            loading ? (<Col lg="12" className='text-center'>
+                                            <h5 className='fw-bold'>
+                                            <FiCommand className="loading-icon" style={{marginLeft: '170%'}} />
+                                            </h5>
+                                        </Col>
+                                        ) : (usersData?.map(user => (
                                             <tr key={user.uid}>
                                                 <td><img src={user.photoURL} alt="" /></td>
                                                 <td>{user.displayName}</td>
                                                 <td>{user.email}</td>
-                                                <td><button className='btn btn-danger' onClick={() => { deleteUser(user.uid);
+                                                <td><button className='btn btn-danger' onClick={() => {
+                                                    deleteUser(user.uid);
                                                 }}>Delete</button></td>
                                             </tr>
-                                        ))
-                                }
-                            </tbody>
-                        </table>
-                    </Col>
-                </Row>
-            </Container>
-        </section>
+                                        )))
+                                    }
+                                </tbody>
+                            </table>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+            <Footer />
+        </>
     )
 }
 

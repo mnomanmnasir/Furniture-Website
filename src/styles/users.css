@@ -1,0 +1,19 @@
+
+.loading-icon {
+    margin-top: 10%;
+    /* margin-left: 50%; */
+    color: teal;
+    font-size: 3rem;
+    animation: animate 2s infinite;
+}
+
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(720deg);
+    }
+}

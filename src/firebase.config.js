@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth'
 import { getFirestore} from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import { getStorage, ref } from 'firebase/storage'
  
 
 const firebaseConfig = {
@@ -11,7 +11,7 @@ const firebaseConfig = {
   storageBucket: "furniturewebsite-ba04a.appspot.com",
   messagingSenderId: "333059849371",
   appId: "1:333059849371:web:532fa4d5e7632ac14e1a3e",
-  measurementId: "G-8BPSKME778"
+  // measurementId: "G-8BPSKME778"
 };
 
 // Initialize Firebase

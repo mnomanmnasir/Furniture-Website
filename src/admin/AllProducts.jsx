@@ -2,25 +2,34 @@ import React from 'react'
 import { Container, Row, Col } from 'reactstrap';
 import useGetData from '../custom-hooks/useGetData';
 import { db } from '../firebase.config';
-import { doc , deleteDoc } from 'firebase/firestore'
+import { doc, deleteDoc } from 'firebase/firestore'
 // import useGetData from '../custom-hooks/useGetData';
 import { toast } from 'react-toastify';
+import Footer from '../components/Footer/Footer'
+import { FiCommand } from "react-icons/fi";
+
+
 
 const AllProducts = () => {
 
     const { data: productsData, loading } = useGetData('products')
 
-const deleteProduct = async (id) => {
-    await deleteDoc(doc(db , 'products' , id))
-toast.success("Deleted!")
-}
+    const deleteProduct = async (id) => {
+        await deleteDoc(doc(db, 'products', id))
+        toast.success("Deleted!")
+    }
 
     return (
         <>
             <section>
                 <Container>
                     <Row>
-                        <Col lg="12">
+                    <Col lg='12'>
+                            <h4 className="fw-bold">
+                                All Products
+                            </h4>
+                        </Col>
+                        <Col lg="12" className='pt-5'>
 
                             <table className='table'>
                                 <thead>
@@ -30,7 +39,7 @@ toast.success("Deleted!")
                                         <th>Category</th>
                                         <th>Price</th>
                                         <th>
-                                            Action 
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
@@ -38,7 +47,11 @@ toast.success("Deleted!")
 
 
                                     {
-                                        loading ? (<h4 className='py-5 text-center fw-bold'>Loading......</h4>) :
+                                        loading ? (<Col lg="12" className='text-center'>
+                                            <h5 className='fw-bold'>
+                                                <FiCommand className="loading-icon" style={{ marginLeft: '200%' }} />
+                                            </h5>
+                                        </Col>) :
 
                                             (productsData.map(item => (
                                                 <tr key={item.id}>
@@ -47,7 +60,7 @@ toast.success("Deleted!")
                                                     <td>{item.category}</td>
                                                     <td>{item.price}</td>
                                                     <td>
-                                                        <button className="btn btn-danger" onClick={() => {deleteProduct(item.id)}}>
+                                                        <button className="btn btn-danger" onClick={() => { deleteProduct(item.id) }}>
                                                             Delete
                                                         </button>
                                                     </td>
@@ -61,6 +74,7 @@ toast.success("Deleted!")
                     </Row>
                 </Container>
             </section>
+            <Footer />
         </>
     )
 }

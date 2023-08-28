@@ -6,8 +6,8 @@ import useGetData from '../custom-hooks/useGetData'
 
 const Dashboard = () => {
 
-const { data: products } = useGetData ('products');
-const { data: users } = useGetData ('users');
+    const { data: products } = useGetData('products');
+    const { data: users } = useGetData('users');
 
     return (
         <section>
@@ -17,13 +17,13 @@ const { data: users } = useGetData ('users');
                     <Col lg='3'><div className="revenue_box">
 
                         <h5>Total Sales</h5>
-                    <span>$7890</span>
+                        <span>$7890</span>
                     </div>
                     </Col>
                     <Col lg='3'><div className="order_box">
                         <h5>Orders</h5>
-                    <span>$780</span>
-                    
+                        <span>$780</span>
+
                     </div>
                     </Col>
                     <Col lg='3'><div className="product_box">
